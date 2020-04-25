@@ -10,8 +10,9 @@ import Location from './location';
 import DropdownAlert from 'react-native-dropdownalert';
 import Axios from 'axios';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }) {
     const [imgSize, setImgSize] = React.useState(20971520)
     const [name, setName] = React.useState('')
     const [email, setEmail] = React.useState('')
@@ -23,6 +24,8 @@ export default function HomeScreen({ navigation }) {
 
     const dropDownAlertRef = React.useRef(DropdownAlert);
 
+    const theme = useSelector(state => state.theme);
+    const dispatch = useDispatch();
     
     const onLibPress = () => {
         ImagePicker.openPicker({
@@ -119,12 +122,11 @@ export default function HomeScreen({ navigation }) {
             setSubmitted(false)
             dropDownAlertRef.current.alertWithType('error', 'Error', 'Sorry something went wrong');
         })
-
     }
 
     return (
         <SafeAreaView >
-            <ScrollView style={style.scrollView}>  
+            <ScrollView style={[style.scrollView, (theme == 'white' ? GlobalStyle.whiteTheme:GlobalStyle.darkTheme)]}>  
                 <View style={{flex: 1, alignItems: 'center', marginBottom: 100}}>                    
                     <Input placeholder="Name" onChangeText={(name)=>{setName(name)}} value={name} autoCompleteType="username"/>
                     <Input placeholder="Email" onChangeText={(email)=>{setEmail(email)}} value={email} autoCompleteType="email"/>
@@ -158,8 +160,10 @@ export default function HomeScreen({ navigation }) {
                         <Text style={[GlobalStyle.clrlight, GlobalStyle.mb10]}>Address is not integrated with any address API as it requires billing.</Text>
                         <Text style={[GlobalStyle.clrlight, GlobalStyle.mb10]}>Because image can't be stored in mockapi only image path and type is storing.</Text>
                     </View>
-            
-                </View>          
+                    <TouchableOpacity style={GlobalStyle.btn} onPress={()=>dispatch({type: theme})}>
+                        <Text>Change Theme</Text>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
             <DropdownAlert ref={dropDownAlertRef} closeInterval={2500} updateStatusBar={false} />
         </SafeAreaView>
@@ -168,7 +172,8 @@ export default function HomeScreen({ navigation }) {
 
 const style = StyleSheet.create({
     scrollView:{
-        padding: 10,
-        backgroundColor: '#fff'
+        padding: 10        
     }
 })
+
+export default HomeScreen;

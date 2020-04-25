@@ -3,14 +3,19 @@ import { Button, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card, Image } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { useSelector } from 'react-redux';
+import GlobalStyle from '../../styles';
 
 export default function EmployeeDetails(props) {
     console.log(props.route.params.item, 'pppp');
     const [item, setItem] = React.useState(props.route.params.item)
+
+    const theme = useSelector(state => state.theme);
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
         
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>            
+        <View style={[{ flex: 1, alignItems: 'center', justifyContent: 'center' }, (theme == 'white' ? GlobalStyle.whiteTheme:GlobalStyle.darkTheme)]}>            
             <Card title={item.name} containerStyle={{width: '90%'}} >
                 <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Image

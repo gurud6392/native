@@ -2,8 +2,10 @@ import React from 'react';
 import { ListItem } from 'react-native-elements'
 import { FlatList } from 'react-native-gesture-handler';
 import Axios from 'axios';
+import { connect } from 'react-redux';
+import GlobalStyle from '../../styles';
 
-export default class EmployeeList extends React.Component {
+class EmployeeList extends React.Component {
     state = {
         dataList: []
     }
@@ -22,12 +24,6 @@ export default class EmployeeList extends React.Component {
         .catch((err)=>{
             console.log(err);
         })
-    }
-
-    navigateToRoute = () => {
-        console.log('asd');
-        
-        // this.props.navigation.navigate('Details')
     }
 
     keyExtractor = (item, index) => index.toString()
@@ -53,8 +49,23 @@ export default class EmployeeList extends React.Component {
                 keyExtractor={this.keyExtractor}
                 data={dataList}
                 renderItem={this.renderItem}
+                style={(this.props.theme == 'white' ? GlobalStyle.whiteTheme:GlobalStyle.darkTheme)}
             />
             :null
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        theme:state.theme
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        setTheme : () =>  dispatch({theme: ''})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeList);

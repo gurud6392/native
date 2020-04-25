@@ -2,12 +2,19 @@ const initialState = {
 	theme: 'white'
 };
 const Reducers = (state = initialState, action) => {
+	console.log(action, 'act');
+	
     switch(action.type) {		
-		case 'SET_THEME':
+		case 'white':
 			return {
 				...state,
-				theme: action.theme
-			};		
+				theme: 'dark'
+			};
+		case 'dark':
+			return {
+				...state,
+				theme: 'white'
+			};
 		default:
 			return state;
 	}

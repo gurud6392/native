@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/dos/shr/test/native/employee/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "/Users/dos/shr/test/emp_test/employee/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "/Users/dos/.gradle/caches/transforms-2/files-2.1/83743d5b7dc3f6b5af5fe6df19a78ed9/jetified-ucrop-2.2.2-native/res/values-zh-rTW/values-zh-rTW.xml",

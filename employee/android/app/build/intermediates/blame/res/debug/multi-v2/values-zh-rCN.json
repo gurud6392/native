@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/dos/shr/test/native/employee/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "/Users/dos/shr/test/emp_test/employee/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "/Users/dos/.gradle/caches/transforms-2/files-2.1/27f2de6e43b8cf7f3e85b438a8206ff5/jetified-play-services-base-16.0.1/res/values-zh-rCN/values.xml",
